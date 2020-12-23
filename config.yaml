@@ -1,0 +1,177 @@
+CostCurveConfig:
+  CRS: epsg:4326
+  MapPlotConfig:
+    filler: false
+  Scenario:
+    CapacityFactors:
+      Biomass: 0.3
+      Coal: 0.6
+      Fossil Fuels: 0.5
+      Gas: 0.4
+  projCRS: epsg:5643
+HarmonizationTool:
+  FigureNames:
+    Barplot: costofccbarplot.png
+    CorrelationMatrix: corrmatrix.png
+    EffxEff: effxeff.png
+    FuelsxCost: fuelsxcost.png
+    FuelsxRegions: fuelsxregions.png
+    RegressionEff: regreff.png
+    RegressionPYear: regrpyear.png
+    RegressionPower: regrtech.png
+    ScatterPlants: scatterplants.png
+  FuelEquivalentNames:
+    HardCoals:
+    - illinois_6
+    - Bituminous
+    - Coal
+    - China
+    - black_coal
+    Lignites:
+    - brown
+    - victorian_brown
+    - subbituminous
+    - Lignite
+    Other:
+    - Petcoke
+    - petcoke
+  Options:
+    CostYear: 2019
+    OnlyCEPCI: false
+    SameCaptureEfficiency: true
+    SameFCF: true
+    SameFuel: false
+IO:
+  CEMENT_INPUT_PATH: GeographicalDataHomogenization/input/cement.csv
+  IRON_INPUT_PATH: GeographicalDataHomogenization/input/iron_steel.csv
+  LOCAL_OPSD_DE_PATH: GeographicalDataHomogenization/input/conventional_power_plants_DE.csv
+  LOCAL_OPSD_EU_PATH: GeographicalDataHomogenization/input/conventional_power_plants_EU.csv
+  LOCAL_PPM_PATH: GeographicalDataHomogenization/input/ppmlocal.csv
+  LOCAL_PPM_PROCESSED_PATH: GeographicalDataHomogenization/input/conventional_power_plants_EU.csv
+  cc_pp_output_path: GeographicalDataHomogenization/power_plant_cc_input.csv
+  cement_output_path: GeographicalDataHomogenization/cement_cc_input.csv
+  cepci_path: CaptureCostHarmonization/input/indexes/CEPCI.csv
+  cluster_creation_input: Scenarios/input/cluster_creation_input.csv
+  coalidx_path: CaptureCostHarmonization/input/indexes/coal_index_WB.csv
+  complete_set_path: CostPotentialCurves/complete_set.csv
+  countries_borders_path: CostPotentialCurves/input/NUTS/NUTS_RG_01M_2021_4326_LEVL_0/NUTS_RG_01M_2021_4326_LEVL_0.shp
+  euro_iso_path: CostPotentialCurves/input/NUTS/iso3166_alpha2_codes.csv
+  eurusd_path: CaptureCostHarmonization/input/indexes/eurofxref-hist.csv
+  figures_path: Figures
+  harmonization_cost_path: CaptureCostHarmonization/intermediate/cost_harmonization.csv
+  harmonization_df_output_path: CaptureCostHarmonization/intermediate/cost_of_carbon_Capture.csv
+  harmonization_fuels_defalut_path: CaptureCostHarmonization/input/fuel_data.json
+  harmonization_index_map_path: CaptureCostHarmonization/intermediate/index_map.png
+  harmonization_input_path: CaptureCostHarmonization/input/input.csv
+  harmonization_output_assumption_path: CaptureCostHarmonization/assumption_map.csv
+  harmonization_output_regression_path: CaptureCostHarmonization/hr_regression_map.csv
+  ihs_path: CaptureCostHarmonization/input/indexes/IHS.csv
+  matched_pp_cost_path: GeographicalDataHomogenization/intermediate/pp_matched_costs.csv
+  ngidx_path: CaptureCostHarmonization/input/indexes/natural_gas_hh.csv
+  nuts_1_path: CostPotentialCurves/input/NUTS/NUTS_RG_01M_2021_4326_LEVL_1/NUTS_RG_01M_2021_4326_LEVL_1.shp
+  nuts_2_path: CostPotentialCurves/input/NUTS/NUTS_RG_01M_2021_4326_LEVL_2/NUTS_RG_01M_2021_4326_LEVL_2.shp
+  nuts_3_path: CostPotentialCurves/input/NUTS/NUTS_RG_01M_2021_4326_LEVL_3/NUTS_RG_01M_2021_4326_LEVL_3.shp
+  processed_pp_input_path: GeographicalDataHomogenization/intermediate/processed_ppm.csv
+  scenario_geco_path: Scenarios/power-production-geco.csv
+  scenario_set_path: CostPotentialCurves/scenario_set.csv
+  steel_output_path: GeographicalDataHomogenization/steel_cc_input.csv
+  test_output_csv: CostPotentialCurves/intermediate/test.csv
+  test_output_shp: CostPotentialCurves/intermediate/test.shp
+InputConfig:
+  cement:
+    index_col: ID
+    sep: ;
+  index:
+    cepci:
+      sep: ;
+      value_column: CEPCI
+      year_column: Year
+    coalidx:
+      sep: ;
+      value_column: Nominal
+      year_column: Year
+    eurusd:
+      date_column: Date
+      sep: ','
+      value_column: USD
+    ngidx:
+      date_column: Date
+      decimal: ','
+      sep: ;
+      value_column: Rate
+    ucci:
+      sep: ;
+      value_column: UCCI
+      year_column: YEAR
+    uoci:
+      sep: ;
+      value_column: UOCI
+      year_column: YEAR
+  iron:
+    sep: ;
+InputHomogenization:
+  CementMethod: MEA
+  CostLevel: reference_value
+  CostMatching:
+    FuelMatch:
+      Bioenergy: bioenergy
+      Hard Coal: coal
+      Lignite: coal
+      Natural Gas: natural_gas
+  CostOfCCConfig:
+    DefaultValues:
+      CapacityFactor:
+        Bioenergy: 0.3
+        Hard Coal: 0.5
+        Lignite: 0.75
+        Natural Gas: 0.4
+      CaptureEfficiency: 0.9
+      FCF: 0.11
+  FillYear: mean
+  FuelCorrection: 1
+  HRLevel: reference_value
+  IncludeBio: true
+  IncludeIndustrial: true
+  RandomForest:
+    Hard Coal:
+      bootstrap: true
+      max_depth: 3
+      max_samples: 0.8
+      n_estimators: 200
+      oob_score: true
+      random_state: 92
+    Lignite:
+      bootstrap: true
+      max_depth: 6
+      max_samples: 0.9
+      n_estimators: 20
+      oob_score: true
+      random_state: 92
+    Natural Gas:
+      bootstrap: true
+      max_depth: 8
+      max_samples: 0.5
+      n_estimators: 20
+      oob_score: true
+      random_state: 92
+  RegressionConfig:
+    Fuels:
+    - Hard Coal
+    - Natural Gas
+    - Lignite
+    Mode: random_forest
+    NaiveValues:
+      Bioenergy: 0.38
+      Hard Coal: 0.45
+      Lignite: 0.35
+      Natural Gas: 0.6
+    X_columns:
+    - Fueltype
+    - Capacity
+    - DateIn
+    - DateRetrofit
+    split:
+      random_state: 45
+      test_size: 0.1
+    y_column: Efficiency
+  SteelMethod: BF
