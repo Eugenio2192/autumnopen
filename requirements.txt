@@ -13,3 +13,4 @@ scikit-learn~=0.23.2
 powerplantmatching~=0.4.8
 cartopy~=0.18.0
 geopandas~=0.8.1
+requests~=2.25.1
