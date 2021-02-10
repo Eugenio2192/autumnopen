@@ -1,0 +1,14 @@
+NUTS:
+  Level0: "https://gisco-services.ec.europa.eu/distribution/v2/nuts/shp/NUTS_RG_01M_2021_4326_LEVL_0.shp.zip"
+  level1: "https://gisco-services.ec.europa.eu/distribution/v2/nuts/shp/NUTS_RG_01M_2021_4326_LEVL_1.shp.zip"
+  level2: "https://gisco-services.ec.europa.eu/distribution/v2/nuts/shp/NUTS_RG_01M_2021_4326_LEVL_2.shp.zip"
+  level3: "https://gisco-services.ec.europa.eu/distribution/v2/nuts/shp/NUTS_RG_01M_2021_4326_LEVL_1.shp.zip"
+OPSD:
+  German: "https://data.open-power-system-data.org/conventional_power_plants/2020-10-01/conventional_power_plants_DE.csv"
+  European: "https://data.open-power-system-data.org/conventional_power_plants/2020-10-01/conventional_power_plants_EU.csv"
+GECO:
+  Energy: "https://ec.europa.eu/assets/jrc/geco_2020_dashboard/data/power-production.csv"
+Index:
+  Coal: "https://openknowledge.worldbank.org/bitstream/handle/10986/34621/CMO-October-2020-Data-Supplement.zip"
+  Gas: "https://www.eia.gov/dnav/ng/hist_xls/RNGWHHDa.xls"
+  Currency: "http://www.ecb.int/stats/eurofxref/eurofxref-hist.zip"

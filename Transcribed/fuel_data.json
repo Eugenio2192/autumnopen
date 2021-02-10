@@ -1,0 +1,34 @@
+ {
+  Illinois_6_ton {
+        Type hard_coal,
+        HHV_GJ 25.35,
+        LHV_GJ 24.12,
+        Cost_2019_USD  34.473,
+        Cost_2020_USD  31.29,
+        Emission_Factor_KG_KJ  0.000094
+  },
+  powder_river_basin_ton {
+        Type lignite,
+        HHV_GJ 11.86,
+        LHV_GJ 10.07,
+        Cost_2019_USD  10.43,
+        Cost_2020_USD  10.43,
+        Emission_Factor_KG_KJ  0.000110
+  },
+  natural_gas_m3 {
+        Type natural_gas,
+        HHV_GJ 40,
+        LHV_GJ 36,
+        Cost_2019_USD84.3,
+        Cost_2020_USD 62.26,
+        Emission_Factor_KG_KJ  0.000056
+  },
+  black_liqor_ton {
+        Type bioenergy,
+        HHV_GJ 21,
+        LHV_GJ 19.3,
+        Cost_2019_USD 63.0,
+        Cost_2020_USD 63.0,
+        Emission_Factor_KG_KJ  0.000071
+  }
+}

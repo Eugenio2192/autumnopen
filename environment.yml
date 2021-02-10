@@ -16,6 +16,7 @@ dependencies:
   - sphinx-prompt=1.3.0
   - statsmodels=0.12.1
   - yaml=0.2.5
+  - requests=2.25.1
   - pip:
     - powerplantmatching==0.4.8
 
